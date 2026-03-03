@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jenkins-aks-demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: jenkins-aks-demo
+  template:
+    metadata:
+      labels:
+        app: jenkins-aks-demo
+    spec:
+      containers:
+      - name: jenkins-aks-demo
+        image: ratnaacr01.azurecr.io/jenkins-aks-demo:latest
+        ports:
+        - containerPort: 3000
