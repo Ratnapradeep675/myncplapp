@@ -1,12 +1,12 @@
-FROM node:18
+FROM tomcat:9-jdk17
 
-WORKDIR /app
+# Remove default ROOT app
+RUN rm -rf /usr/local/tomcat/webapps/ROOT
 
-COPY package.json .
-COPY app.js .
+# Copy your WAR file
+COPY target/myncplapp.war /usr/local/tomcat/webapps/ROOT.war
 
-RUN npm install
+EXPOSE 8080
 
-EXPOSE 3000
+CMD ["catalina.sh", "run"]
 
-CMD ["npm", "start"]
