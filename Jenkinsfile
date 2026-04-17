@@ -20,6 +20,11 @@ pipeline {
                 echo "SonarQube scan will run here"
             }
         }
+
+        stage('Snyk Scan') {
+            steps {
+                sh 'snyk test || true'
+            }
+        }
     }
 }
-
