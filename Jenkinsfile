@@ -14,5 +14,12 @@ pipeline {
                 echo "Running build stage..."
             }
         }
+
+        stage('SonarQube Scan') {
+            steps {
+                echo "SonarQube scan will run here"
+            }
+        }
     }
 }
+
